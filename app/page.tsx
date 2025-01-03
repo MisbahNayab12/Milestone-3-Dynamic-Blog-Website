@@ -7,7 +7,6 @@ import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export default function page (){
-  const postId = '1234'
   return (
     <div className='mx-10 lg:mx-28 font-sans'> 
       <h1 className='mt-10 text-center text-4xl lg:text-6xl p-5 font-bold text-amber-700'>Welcome to Educational Blog </h1>

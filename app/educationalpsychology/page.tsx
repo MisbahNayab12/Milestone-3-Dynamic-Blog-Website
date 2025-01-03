@@ -77,7 +77,7 @@ export default function educationalPsychology () {
 
         <div className='grid gap-10 lg:grid-cols-2 2xl:grid-cols-3 place-items-center '>
           {
-            posts.map((post, index) => (
+            posts.map((post) => (
               <div key={post.id} className='w-4/5 p-4 border rounded-lg shadow-md'>
                 <Image src={post.imagePath} alt="image" className="w-full object-cover rounded-lg"/>
                 <div>
