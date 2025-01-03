@@ -21,7 +21,7 @@ interface POST {
   slug: string
 }
 
-export default function Approach({ params }: { params: { slug: string } }) {
+export default function Approach() {
   const posts: POST[] = [
     {
       id: "1",
@@ -77,15 +77,15 @@ export default function Approach({ params }: { params: { slug: string } }) {
   
   const post = posts.find((post) => post.slug === slug);
 
-  if (!post) {
-    return <div>Post not found!</div>;
-  }
-  
   const [, setApproach] = useState<string | null>(null);
 
   useEffect(() => {
     setApproach(typeof slug === 'string' ? slug : null);
   }, [slug]);
+
+  if (!post) {
+    return <div>Post not found!</div>;
+  }
 
   return (
 

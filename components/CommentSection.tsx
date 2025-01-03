@@ -10,7 +10,7 @@ interface Comment {
   text: string;
 }
 
-interface CommentSectionProps {}
+type CommentSectionProps = Record<string, never>
 
 const CommentSection: React.FC<CommentSectionProps> = () => {
   const [comments, setComments] = useState<Comment[]>([]);
