@@ -10,11 +10,9 @@ interface Comment {
   text: string;
 }
 
-interface CommentSectionProps {
-  postId: string;
-}
+interface CommentSectionProps {}
 
-const CommentSection: React.FC<CommentSectionProps> = ({ postId }) => {
+const CommentSection: React.FC<CommentSectionProps> = () => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState("");
   const [authorName, setAuthorName] = useState("");

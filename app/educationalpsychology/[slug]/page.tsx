@@ -34,7 +34,7 @@ export default function Approach({ params }: { params: { slug: string } }) {
     {
       id: "2",
       title: "Collaborative Learning: The Power of Team Work",
-      description: "Collaborative learning isnt just about sharing notes or working on group projects; it’s about unlocking the full potential of teamwork to deepen understanding, spark creativity, and foster personal growth. Imagine tackling a tough math problem—what seems impossible alone becomes achievable when a group pools their ideas and perspectives. When learners collaborate, they expose each other to diverse approaches, unique insights, and creative problem-solving techniques that might not surface in isolation. Beyond academics, working together builds communication and interpersonal skills, preparing individuals for real-world teamwork in careers and communities. Plus, let’s be honest—learning is way more fun when you're brainstorming ideas with friends, bouncing off thoughts, and celebrating breakthroughs together. Its the perfect mix of productivity and connection, proving that the best way to grow is by lifting each other up!",
+      description: "Collaborative learning isnt just about sharing notes or working on group projects; its about unlocking the full potential of teamwork to deepen understanding, spark creativity, and foster personal growth. Imagine tackling a tough math problem—what seems impossible alone becomes achievable when a group pools their ideas and perspectives. When learners collaborate, they expose each other to diverse approaches, unique insights, and creative problem-solving techniques that might not surface in isolation. Beyond academics, working together builds communication and interpersonal skills, preparing individuals for real-world teamwork in careers and communities. Plus, lets be honest—learning is way more fun when you're brainstorming ideas with friends, bouncing off thoughts, and celebrating breakthroughs together. Its the perfect mix of productivity and connection, proving that the best way to grow is by lifting each other up!",
       imagePath: Blog2,
       date: "September 28, 2022",
       slug: "blog-collaborative-learning"
@@ -50,7 +50,7 @@ export default function Approach({ params }: { params: { slug: string } }) {
     {
       id: "4",
       title: "Problem Based Learning",
-      description: "Problem-based learning (PBL) is a dynamic instructional approach that places students at the center of the learning process by engaging them in solving complex, real-world problems. Unlike traditional teaching methods, PBL shifts the focus from rote memorization to active exploration, encouraging students to take ownership of their learning journey. In this model, students work collaboratively in small groups to investigate a problem, identify knowledge gaps, and develop solutions, guided by a facilitator who provides support rather than direct instruction. This hands-on approach not only enhances critical thinking and problem-solving skills but also fosters teamwork, communication, and adaptability—key competencies for success in today’s fast-evolving world. Additionally, PBL connects theoretical concepts to practical applications, making learning more relevant and engaging. By encountering challenges that mimic real-life scenarios, students gain the confidence and skills needed to tackle future problems with creativity and resourcefulness. Problem-based learning transforms education into an interactive and meaningful experience, preparing students for both academic and professional success.",
+      description: "Problem-based learning (PBL) is a dynamic instructional approach that places students at the center of the learning process by engaging them in solving complex, real-world problems. Unlike traditional teaching methods, PBL shifts the focus from rote memorization to active exploration, encouraging students to take ownership of their learning journey. In this model, students work collaboratively in small groups to investigate a problem, identify knowledge gaps, and develop solutions, guided by a facilitator who provides support rather than direct instruction. This hands-on approach not only enhances critical thinking and problem-solving skills but also fosters teamwork, communication, and adaptability—key competencies for success in todays fast-evolving world. Additionally, PBL connects theoretical concepts to practical applications, making learning more relevant and engaging. By encountering challenges that mimic real-life scenarios, students gain the confidence and skills needed to tackle future problems with creativity and resourcefulness. Problem-based learning transforms education into an interactive and meaningful experience, preparing students for both academic and professional success.",
       imagePath: Blog4,
       date: "August 31, 2019",
       slug: "blog-problem-based-learning"
@@ -58,7 +58,7 @@ export default function Approach({ params }: { params: { slug: string } }) {
     {
       id: "5",
       title: "Project Based Learning",
-      description: "TProject-based learning (PBL) is an educational strategy that emphasizes active engagement through the completion of meaningful, hands-on projects designed to solve real-world problems or answer complex questions. This approach goes beyond traditional teaching methods by encouraging students to explore, inquire, and create as they work on projects that integrate various subject areas and skills. PBL fosters a deep understanding of content by requiring students to apply their knowledge in authentic, practical ways, whether designing a sustainable building, developing a business plan, or creating a multimedia presentation. Collaboration is a cornerstone of PBL, as students often work in teams, learning to communicate effectively, manage conflicts, and leverage each member’s strengths. Additionally, this method cultivates critical thinking, creativity, and resilience, as students face challenges, refine their ideas, and iterate on their work. Guided by teachers who act as facilitators rather than direct instructors, students take ownership of their learning journey, making the experience both empowering and deeply engaging. By connecting learning to the real world, project-based learning not only boosts academic achievement but also prepares students with the skills and confidence they need to thrive in future careers and life challenges.",
+      description: "TProject-based learning (PBL) is an educational strategy that emphasizes active engagement through the completion of meaningful, hands-on projects designed to solve real-world problems or answer complex questions. This approach goes beyond traditional teaching methods by encouraging students to explore, inquire, and create as they work on projects that integrate various subject areas and skills. PBL fosters a deep understanding of content by requiring students to apply their knowledge in authentic, practical ways, whether designing a sustainable building, developing a business plan, or creating a multimedia presentation. Collaboration is a cornerstone of PBL, as students often work in teams, learning to communicate effectively, manage conflicts, and leverage each members strengths. Additionally, this method cultivates critical thinking, creativity, and resilience, as students face challenges, refine their ideas, and iterate on their work. Guided by teachers who act as facilitators rather than direct instructors, students take ownership of their learning journey, making the experience both empowering and deeply engaging. By connecting learning to the real world, project-based learning not only boosts academic achievement but also prepares students with the skills and confidence they need to thrive in future careers and life challenges.",
       imagePath: Blog5,
       date: "March 02, 2015",
       slug: "blog-project-based-learning",
@@ -72,8 +72,6 @@ export default function Approach({ params }: { params: { slug: string } }) {
       slug: "blog-game-based-learning"
     },
   ]
-
-  const postID = '1234'
   const {slug} = useParams();
 
   
@@ -83,19 +81,11 @@ export default function Approach({ params }: { params: { slug: string } }) {
     return <div>Post not found!</div>;
   }
   
-  const [approach, setApproach] = useState<string | null>(null);
+  const [, setApproach] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchParams() {
-      const unwrappedParams = await params; // Await the params promise
-      setApproach(unwrappedParams?.slug);
-    }
-    fetchParams();
-  }, [params]);
-
-  const postDescription = (description: string) => {
-    return description
-  }
+    setApproach(typeof slug === 'string' ? slug : null);
+  }, [slug]);
 
   return (
 
@@ -105,7 +95,8 @@ export default function Approach({ params }: { params: { slug: string } }) {
     <Image src={post?.imagePath} alt={post.title} width={800} height={400} className='mx-auto lg:w-9/12 lg:object-contain' />
     <p className=' text-left lg:text-center leading-8 mt-5'>{post.description}</p>
     
-    <CommentSection postId={post.id} />
+    <CommentSection/>
   </div>
   );
 }
+
